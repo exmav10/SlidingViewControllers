@@ -78,6 +78,9 @@ open class PaperOnboarding: UIView { //Burasi degisebilir
 //                fillAnimationView?.fillAnimation(backgroundColor(currentIndex), centerPosition: postion, duration: 0.5)
             }
             pageView?.currentIndex(index, animated: animated)
+            if let selectedItem = itemsInfo?[index] {
+                changeCurrentController(controllerIdentifier: selectedItem.storyBoardID)
+            }
 //            contentView?.currentItem(index, animated: animated)
             CATransaction.commit()
         } else if index >= itemsCount {
@@ -85,7 +88,11 @@ open class PaperOnboarding: UIView { //Burasi degisebilir
         }
     }
     
-    
+    func changeCurrentController(controllerIdentifier: String){
+        if case let dataSource as PaperOnboardingDataSource = dataSource {
+            dataSource.onboardingPageItemChanged(newStoryboardID: "firstVC", oldStoryboardID: "secondVC")
+        }
+    }
     
     
     func commonInit(){
@@ -98,6 +105,7 @@ open class PaperOnboarding: UIView { //Burasi degisebilir
         if case let dataSource as PaperOnboardingDataSource = dataSource {
             pageViewSelectedRadius = dataSource.onboardingPageItemSelectedRadius()
         }
+        
         itemsInfo = createItemsInfo()
         translatesAutoresizingMaskIntoConstraints = false
 //        fillAnimationView = FillAnimationView.animationViewOnView(self, color: backgroundColor(currentIndex))
@@ -146,7 +154,7 @@ open class PaperOnboarding: UIView { //Burasi degisebilir
         return pageView
     }
     
-    //Array'i döner
+    //Creates new items array.
     fileprivate func createItemsInfo() -> [OnboardingItemInfo] {
         guard case let dataSource as PaperOnboardingDataSource = self.dataSource else {
             fatalError("set dataSource")

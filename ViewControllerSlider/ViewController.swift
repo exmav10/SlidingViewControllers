@@ -8,15 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, PaperOnboardingDelegate {
 
 
     fileprivate let items = [
         OnboardingItemInfo(storyBoardID: "FirstVC",title: "First Page", backgroundColor: .appleBlue1),
         OnboardingItemInfo(storyBoardID: "SecondVC", title: "Second Page", backgroundColor: .appleYellow),
-        OnboardingItemInfo(storyBoardID: "SecondVC", title: "Second Page", backgroundColor: .applePink),
-        OnboardingItemInfo(storyBoardID: "SecondVC", title: "Second Page", backgroundColor: .applePurple)
-        
+        OnboardingItemInfo(storyBoardID: "ThirdVC", title: "Second Page", backgroundColor: .applePink),
     ]
     
     override func viewDidLoad() {
@@ -57,6 +55,13 @@ class ViewController: UIViewController {
 // MARK: PaperOnboardingDataSource
 extension ViewController: PaperOnboardingDataSource {
     
+    func onboardingPageItemChanged(newStoryboardID: String, oldStoryboardID: String) {
+        print("NEW STORYBOARDID: \(newStoryboardID)")
+        print("OLD STORYBOARDID: \(oldStoryboardID)")
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: newStoryboardID)
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     func onboardingItem(at index: Int) -> OnboardingItemInfo {
         return items[index]
     }
@@ -75,4 +80,5 @@ extension ViewController: PaperOnboardingDataSource {
     //    func onboardingPageItemColor(at index: Int) -> UIColor {
     //        return [UIColor.white, UIColor.red, UIColor.green][index]
     //    }
+    
 }

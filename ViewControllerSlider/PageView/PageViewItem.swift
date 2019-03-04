@@ -43,12 +43,11 @@ extension PageViewItem {
         let toAlpha: CGFloat = selected == true ? 1 : 0
         imageAlphaAnimation(toAlpha, duration: duration)
         let currentRadius = selected == true ? selectedCircleRadius : circleRadius
-        let scaleAnimation = circleScaleAnimation(currentRadius - lineWidth / 2.0, duration: duration)
+        let scaleAnimation = circleScaleAnimation(toRadius: currentRadius - lineWidth / 2.0, duration: duration)
         let toColor = fillColor == true ? itemColor : UIColor.clear
-        let colorAnimation = circleBackgroundAnimation(toColor, duration: duration)
+        let colorAnimation = circleBackgroundAnimation(toColor: toColor, duration: duration)
         circleLayer?.add(scaleAnimation, forKey: nil)
         circleLayer?.add(colorAnimation, forKey: nil)
-        
     }
 }
 
@@ -108,7 +107,7 @@ extension PageViewItem {
 extension PageViewItem {
     
     //Animation to make circle bigger.
-    fileprivate func circleScaleAnimation(_ toRadius: CGFloat, duration: Double) -> CABasicAnimation {
+    fileprivate func circleScaleAnimation(toRadius: CGFloat, duration: Double) -> CABasicAnimation {
         let path = UIBezierPath(arcCenter: CGPoint.zero, radius: toRadius, startAngle: 0, endAngle: CGFloat(2.0 * Double.pi), clockwise: true)
         let animation = Init(CABasicAnimation(keyPath: "path")) { (anim) in
             anim.duration = duration
@@ -119,7 +118,7 @@ extension PageViewItem {
         return animation
     }
     
-    fileprivate func circleBackgroundAnimation(_ toColor: UIColor, duration: Double) -> CABasicAnimation {
+    fileprivate func circleBackgroundAnimation(toColor: UIColor, duration: Double) -> CABasicAnimation {
         let animation = Init(CABasicAnimation(keyPath: "fillColor")) { (anim) in
             anim.duration = duration
             anim.toValue = toColor.cgColor
