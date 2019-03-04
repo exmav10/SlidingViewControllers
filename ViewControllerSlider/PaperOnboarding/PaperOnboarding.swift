@@ -12,12 +12,12 @@ import UIKit
 public struct OnboardingItemInfo {
     public let title: String
     public let backgroundColor: UIColor
-    public init (title: String, backgroundColor: UIColor) {
+    public let storyBoardID: String
+    public init (storyBoardID: String, title: String, backgroundColor: UIColor) {
         self.title = title
         self.backgroundColor = backgroundColor
+        self.storyBoardID = storyBoardID
     }
-    
-    
 }
 
 open class PaperOnboarding: UIView { //Burasi degisebilir
@@ -38,46 +38,46 @@ open class PaperOnboarding: UIView { //Burasi degisebilir
     fileprivate var itemsInfo: [OnboardingItemInfo]?
     
     //Şuanlık gereksiz
-    fileprivate let pageViewBottomConstant: CGFloat = 32
+    fileprivate let pageViewBottomConstant: CGFloat
     fileprivate var pageViewSelectedRadius: CGFloat = 22
     fileprivate var pageViewRadius: CGFloat = 8
     
 //    fileprivate var fillAnimationView: FillAnimationView?
-//    fileprivate var pageView: PageView?
+    fileprivate var pageView: PageView?
     fileprivate var gestureControl: GestureControl?
 //    fileprivate var contentView: OnboardingContentView?
     
-//    public init(pageViewBottomConstant: CGFloat = 32) {
-//        self.pageViewBottomConstant = pageViewBottomConstant
-//        super.init(frame: CGRect.zero)
-//    }
+    public init(pageViewBottomConstant: CGFloat = 32) {
+        self.pageViewBottomConstant = pageViewBottomConstant
+        super.init(frame: CGRect.zero)
+    }
     
-//    public required init?(coder aDecoder: NSCoder) {
-//        self.pageViewBottomConstant = 32
-//        self.pageViewSelectedRadius = 22
-//        self.pageViewRadius = 8
-//        super.init(coder: aDecoder)
-//    }
+    public required init?(coder aDecoder: NSCoder) {
+        self.pageViewBottomConstant = 32
+        self.pageViewSelectedRadius = 22
+        self.pageViewRadius = 8
+        super.init(coder: aDecoder)
+    }
     
     /**
      Scrolls through the PaperOnboarding until a index is at a particular location on the screen.
-     - parameter index:    Scrolling to a curretn index item.
+     - parameter index:    Scrolling to a current index item.
      - parameter animated: True if you want to animate the change in position; false if it should be immediate.
      */
+    //SELECTED ITEM IS CHANGED
     func currentIndex(_ index: Int, animated: Bool) {
-        if 0 ..< itemsCount ~= index {
+        if 0 ..< itemsCount ~= index {  //Checks if index is between 0 and itemsCount
             (delegate as? PaperOnboardingDelegate)?.onboardingWillTransitonToIndex(index)
             currentIndex = index
+            print("CURRENT INDEX: \(currentIndex)")
             CATransaction.begin()
-
             CATransaction.setCompletionBlock({
                 (self.delegate as? PaperOnboardingDelegate)?.onboardingDidTransitonToIndex(index)
             })
-
-//            if let postion = pageView?.positionItemIndex(index, onView: self) {
+            if let position = pageView?.positionItemIndex(index, onView: self) {
 //                fillAnimationView?.fillAnimation(backgroundColor(currentIndex), centerPosition: postion, duration: 0.5)
-//            }
-//            pageView?.currentIndex(index, animated: animated)
+            }
+            pageView?.currentIndex(index, animated: animated)
 //            contentView?.currentItem(index, animated: animated)
             CATransaction.commit()
         } else if index >= itemsCount {
@@ -92,59 +92,59 @@ open class PaperOnboarding: UIView { //Burasi degisebilir
         if case let dataSource as PaperOnboardingDataSource = dataSource {
             itemsCount = dataSource.onboardingItemsCount()
         }
-//        if case let dataSource as PaperOnboardingDataSource = dataSource {
-//            pageViewRadius = dataSource.onboardinPageItemRadius()
-//        }
-//        if case let dataSource as PaperOnboardingDataSource = dataSource {
-//            pageViewSelectedRadius = dataSource.onboardingPageItemSelectedRadius()
-//        }
+        if case let dataSource as PaperOnboardingDataSource = dataSource {
+            pageViewRadius = dataSource.onboardinPageItemRadius()
+        }
+        if case let dataSource as PaperOnboardingDataSource = dataSource {
+            pageViewSelectedRadius = dataSource.onboardingPageItemSelectedRadius()
+        }
         itemsInfo = createItemsInfo()
-//        translatesAutoresizingMaskIntoConstraints = false
+        translatesAutoresizingMaskIntoConstraints = false
 //        fillAnimationView = FillAnimationView.animationViewOnView(self, color: backgroundColor(currentIndex))
 //        contentView = OnboardingContentView.contentViewOnView(self,
 //                                                              delegate: self,
 //                                                              itemsCount: itemsCount,
 //                                                              bottomConstant: pageViewBottomConstant * -1 - pageViewSelectedRadius)
-//        pageView = createPageView()
-//        gestureControl = GestureControl(view: self, delegate: self)
-//
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
-//        addGestureRecognizer(tapGesture)
+        pageView = createPageView()
+        gestureControl = GestureControl(view: self, delegate: self)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        addGestureRecognizer(tapGesture)
     }
     
     @objc fileprivate func tapAction(_ sender: UITapGestureRecognizer) {
-//        guard
-//            (delegate as? PaperOnboardingDelegate)?.enableTapsOnPageControl == true,
-//            let pageView = self.pageView,
-//            let pageControl = pageView.containerView
-//            else { return }
-//        let touchLocation = sender.location(in: self)
-//        let convertedLocation = pageControl.convert(touchLocation, from: self)
-//        guard let pageItem = pageView.hitTest(convertedLocation, with: nil) else { return }
-//        let index = pageItem.tag - 1
-//        guard index != currentIndex else { return }
-//        currentIndex(index, animated: true)
-//        (delegate as? PaperOnboardingDelegate)?.onboardingWillTransitonToIndex(index)
+        guard
+            (delegate as? PaperOnboardingDelegate)?.enableTapsOnPageControl == true,
+            let pageView = self.pageView,
+            let pageContainer = pageView.pageContainer
+            else { return }
+        let touchLocation = sender.location(in: self)
+        let convertedLocation = pageContainer.convert(touchLocation, from: self)
+        guard let pageItem = pageView.hitTest(convertedLocation, with: nil) else { return }
+        let index = pageItem.tag - 1
+        guard index != currentIndex else { return }
+        currentIndex(index, animated: true)
+        (delegate as? PaperOnboardingDelegate)?.onboardingWillTransitonToIndex(index)
     }
     
-//    fileprivate func createPageView() -> PageView {
-//        let pageView = PageView.pageViewOnView(
-//            self,
-//            itemsCount: itemsCount,
-//            bottomConstant: pageViewBottomConstant * -1,
-//            radius: pageViewRadius,
-//            selectedRadius: pageViewSelectedRadius,
-//            itemColor: { [weak self] in
-//                guard let dataSource = self?.dataSource as? PaperOnboardingDataSource else { return .white }
-//                return dataSource.onboardingPageItemColor(at: $0)
-//        })
-//
-//        pageView.configuration = { [weak self] item, index in
-//            item.imageView?.image = self?.itemsInfo?[index].pageIcon
-//        }
-//
-//        return pageView
-//    }
+    fileprivate func createPageView() -> PageView {
+        let pageView = PageView.pageViewOnView(
+            self,
+            itemsCount: itemsCount,
+            bottomConstraint: pageViewBottomConstant * -1,
+            radius: pageViewRadius,
+            selectedRadius: pageViewSelectedRadius,
+            itemColor: { [weak self] in
+                guard let dataSource = self?.dataSource as? PaperOnboardingDataSource else { return .white }
+                return dataSource.onboardingPageItemColor(at: $0)
+        })
+
+        pageView.configuration = { [weak self] item, index in
+            //item.imageView?.image = self?.itemsInfo?[index].pageIcon
+            //item.backgroundColor = self?.itemsInfo?[index].backgroundColor
+        }
+
+        return pageView
+    }
     
     //Array'i döner
     fileprivate func createItemsInfo() -> [OnboardingItemInfo] {
@@ -165,7 +165,6 @@ open class PaperOnboarding: UIView { //Burasi degisebilir
 }
 // MARK: helpers
 extension PaperOnboarding {
-    
     fileprivate func backgroundColor(_ index: Int) -> UIColor {
         guard let color = itemsInfo?[index].backgroundColor else {
             return .appleGreen

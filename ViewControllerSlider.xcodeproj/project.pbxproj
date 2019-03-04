@@ -13,6 +13,18 @@
 		177F74432227DB7B0096D1BE /* ViewControllerSlider.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 177F74412227DB7B0096D1BE /* ViewControllerSlider.xcdatamodeld */; };
 		177F74452227DB7C0096D1BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 177F74442227DB7C0096D1BE /* Assets.xcassets */; };
 		177F74482227DB7C0096D1BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 177F74462227DB7C0096D1BE /* LaunchScreen.storyboard */; };
+		177F74502227DBF30096D1BE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F744F2227DBF30096D1BE /* FirstViewController.swift */; };
+		177F74522227DBFD0096D1BE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F74512227DBFD0096D1BE /* SecondViewController.swift */; };
+		177F74542227DC090096D1BE /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F74532227DC090096D1BE /* ThirdViewController.swift */; };
+		177F74562227DC240096D1BE /* DesignUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F74552227DC240096D1BE /* DesignUtils.swift */; };
+		177F74582227F03A0096D1BE /* GestureControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F74572227F03A0096D1BE /* GestureControl.swift */; };
+		177F745A2227FAAC0096D1BE /* ConstraintHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F74592227FAAC0096D1BE /* ConstraintHelper.swift */; };
+		177F745D222801710096D1BE /* PaperOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F745C222801710096D1BE /* PaperOnboarding.swift */; };
+		177F745F2228061A0096D1BE /* PaperOnboardingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F745E2228061A0096D1BE /* PaperOnboardingDataSource.swift */; };
+		177F74612228065F0096D1BE /* PaperOnboardingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F74602228065F0096D1BE /* PaperOnboardingDelegate.swift */; };
+		177F74652228192D0096D1BE /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F74642228192D0096D1BE /* PageView.swift */; };
+		177F7467222819DF0096D1BE /* PageViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F7466222819DF0096D1BE /* PageViewItem.swift */; };
+		177F7469222827B70096D1BE /* PageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F7468222827B70096D1BE /* PageContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +36,18 @@
 		177F74442227DB7C0096D1BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		177F74472227DB7C0096D1BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		177F74492227DB7C0096D1BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		177F744F2227DBF30096D1BE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		177F74512227DBFD0096D1BE /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		177F74532227DC090096D1BE /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		177F74552227DC240096D1BE /* DesignUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignUtils.swift; sourceTree = "<group>"; };
+		177F74572227F03A0096D1BE /* GestureControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureControl.swift; sourceTree = "<group>"; };
+		177F74592227FAAC0096D1BE /* ConstraintHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintHelper.swift; sourceTree = "<group>"; };
+		177F745C222801710096D1BE /* PaperOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperOnboarding.swift; sourceTree = "<group>"; };
+		177F745E2228061A0096D1BE /* PaperOnboardingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperOnboardingDataSource.swift; sourceTree = "<group>"; };
+		177F74602228065F0096D1BE /* PaperOnboardingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperOnboardingDelegate.swift; sourceTree = "<group>"; };
+		177F74642228192D0096D1BE /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		177F7466222819DF0096D1BE /* PageViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewItem.swift; sourceTree = "<group>"; };
+		177F7468222827B70096D1BE /* PageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +80,9 @@
 		177F74392227DB7B0096D1BE /* ViewControllerSlider */ = {
 			isa = PBXGroup;
 			children = (
+				177F7463222810FC0096D1BE /* PageView */,
+				177F7462222810D70096D1BE /* PaperOnboarding */,
+				177F745B2227FE8E0096D1BE /* Helpers */,
 				177F743A2227DB7B0096D1BE /* AppDelegate.swift */,
 				177F743C2227DB7B0096D1BE /* ViewController.swift */,
 				177F743E2227DB7B0096D1BE /* Main.storyboard */,
@@ -63,8 +90,41 @@
 				177F74462227DB7C0096D1BE /* LaunchScreen.storyboard */,
 				177F74492227DB7C0096D1BE /* Info.plist */,
 				177F74412227DB7B0096D1BE /* ViewControllerSlider.xcdatamodeld */,
+				177F744F2227DBF30096D1BE /* FirstViewController.swift */,
+				177F74512227DBFD0096D1BE /* SecondViewController.swift */,
+				177F74532227DC090096D1BE /* ThirdViewController.swift */,
+				177F74552227DC240096D1BE /* DesignUtils.swift */,
+				177F74572227F03A0096D1BE /* GestureControl.swift */,
 			);
 			path = ViewControllerSlider;
+			sourceTree = "<group>";
+		};
+		177F745B2227FE8E0096D1BE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				177F74592227FAAC0096D1BE /* ConstraintHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		177F7462222810D70096D1BE /* PaperOnboarding */ = {
+			isa = PBXGroup;
+			children = (
+				177F745C222801710096D1BE /* PaperOnboarding.swift */,
+				177F745E2228061A0096D1BE /* PaperOnboardingDataSource.swift */,
+				177F74602228065F0096D1BE /* PaperOnboardingDelegate.swift */,
+			);
+			path = PaperOnboarding;
+			sourceTree = "<group>";
+		};
+		177F7463222810FC0096D1BE /* PageView */ = {
+			isa = PBXGroup;
+			children = (
+				177F74642228192D0096D1BE /* PageView.swift */,
+				177F7466222819DF0096D1BE /* PageViewItem.swift */,
+				177F7468222827B70096D1BE /* PageContainer.swift */,
+			);
+			path = PageView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +198,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				177F7467222819DF0096D1BE /* PageViewItem.swift in Sources */,
 				177F743D2227DB7B0096D1BE /* ViewController.swift in Sources */,
 				177F74432227DB7B0096D1BE /* ViewControllerSlider.xcdatamodeld in Sources */,
+				177F74612228065F0096D1BE /* PaperOnboardingDelegate.swift in Sources */,
 				177F743B2227DB7B0096D1BE /* AppDelegate.swift in Sources */,
+				177F74652228192D0096D1BE /* PageView.swift in Sources */,
+				177F7469222827B70096D1BE /* PageContainer.swift in Sources */,
+				177F745D222801710096D1BE /* PaperOnboarding.swift in Sources */,
+				177F74522227DBFD0096D1BE /* SecondViewController.swift in Sources */,
+				177F745F2228061A0096D1BE /* PaperOnboardingDataSource.swift in Sources */,
+				177F745A2227FAAC0096D1BE /* ConstraintHelper.swift in Sources */,
+				177F74542227DC090096D1BE /* ThirdViewController.swift in Sources */,
+				177F74502227DBF30096D1BE /* FirstViewController.swift in Sources */,
+				177F74562227DC240096D1BE /* DesignUtils.swift in Sources */,
+				177F74582227F03A0096D1BE /* GestureControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
