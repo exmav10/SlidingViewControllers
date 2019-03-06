@@ -20,7 +20,7 @@ public struct OnboardingItemInfo {
     }
 }
 
-open class PaperOnboarding: UIView { //Burasi degisebilir
+open class PaperOnboarding: UIView { //Container View
     
     ///  The object that acts as the data source of the  PaperOnboardingDataSource.
     @IBOutlet weak open var dataSource: AnyObject? {
@@ -113,7 +113,7 @@ open class PaperOnboarding: UIView { //Burasi degisebilir
 //                                                              delegate: self,
 //                                                              itemsCount: itemsCount,
 //                                                              bottomConstant: pageViewBottomConstant * -1 - pageViewSelectedRadius)
-        pageView = createPageView()
+        pageView = createPageView() //Page View must be on top of contentView
         gestureControl = GestureControl(view: self, delegate: self)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         addGestureRecognizer(tapGesture)

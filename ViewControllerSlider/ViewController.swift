@@ -59,7 +59,15 @@ extension ViewController: PaperOnboardingDataSource {
         print("NEW STORYBOARDID: \(newStoryboardID)")
         print("OLD STORYBOARDID: \(oldStoryboardID)")
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: newStoryboardID)
-        self.present(vc, animated: true, completion: nil)
+        self.addChild(vc)
+        vc.view.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(vc.view)
+        NSLayoutConstraint.activate([
+            vc.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            vc.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            vc.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            vc.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)])
+        vc.didMove(toParent: self)
     }
     
     func onboardingItem(at index: Int) -> OnboardingItemInfo {
