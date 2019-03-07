@@ -49,7 +49,7 @@ public protocol PaperOnboardingDataSource {
     /// - Returns: selected state radius of the PageView Item
     func onboardingPageItemSelectedRadius() -> CGFloat
     
-    func onboardingPageItemChanged(newStoryboardID: String, oldStoryboardID: String)
+    func onboardingPageItemChanged(newStoryboardID: String)
 }
 
 public extension PaperOnboardingDataSource {

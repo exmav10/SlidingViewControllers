@@ -12,10 +12,12 @@ class ViewController: UIViewController, PaperOnboardingDelegate {
 
 
     fileprivate let items = [
-        OnboardingItemInfo(storyBoardID: "FirstVC",title: "First Page", backgroundColor: .appleBlue1),
-        OnboardingItemInfo(storyBoardID: "SecondVC", title: "Second Page", backgroundColor: .appleYellow),
-        OnboardingItemInfo(storyBoardID: "ThirdVC", title: "Second Page", backgroundColor: .applePink),
+        OnboardingItemInfo(storyBoardID: "firstVC",title: "First Page", backgroundColor: .appleBlue1),
+        OnboardingItemInfo(storyBoardID: "secondVC", title: "Second Page", backgroundColor: .appleYellow),
+        OnboardingItemInfo(storyBoardID: "thirdVC", title: "Second Page", backgroundColor: .applePink),
     ]
+    
+    fileprivate var currentViewController = UIViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +31,32 @@ class ViewController: UIViewController, PaperOnboardingDelegate {
         self.view.backgroundColor = .appleRed
     }
     
+    let onboarding = PaperOnboarding()
     private func setupPaperOnboardingView() {
-        let onboarding = PaperOnboarding()
+        
         onboarding.delegate = self
         onboarding.dataSource = self
         onboarding.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(onboarding)
-        
+        //view.addSubview(onboarding)
+        addChildViewController(viewControllerID: items[0].storyBoardID)
         // Add constraints
+       
+        
+        
+    }
+    
+    private func addChildViewController(viewControllerID: String){
+        currentViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: viewControllerID)
+        self.addChild(currentViewController)
+        currentViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        currentViewController.view.backgroundColor = .clear
+        self.view.addSubview(currentViewController.view)
+        NSLayoutConstraint.activate([
+            currentViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            currentViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            currentViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            currentViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)])
+        currentViewController.view.addSubview(onboarding)
         for attribute: NSLayoutConstraint.Attribute in [.left, .right, .top, .bottom] {
             let constraint = NSLayoutConstraint(item: onboarding,
                                                 attribute: attribute,
@@ -47,6 +67,7 @@ class ViewController: UIViewController, PaperOnboardingDelegate {
                                                 constant: 0)
             view.addConstraint(constraint)
         }
+        currentViewController.didMove(toParent: self)
     }
     
 }
@@ -55,19 +76,18 @@ class ViewController: UIViewController, PaperOnboardingDelegate {
 // MARK: PaperOnboardingDataSource
 extension ViewController: PaperOnboardingDataSource {
     
-    func onboardingPageItemChanged(newStoryboardID: String, oldStoryboardID: String) {
-        print("NEW STORYBOARDID: \(newStoryboardID)")
-        print("OLD STORYBOARDID: \(oldStoryboardID)")
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: newStoryboardID)
-        self.addChild(vc)
-        vc.view.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(vc.view)
-        NSLayoutConstraint.activate([
-            vc.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            vc.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            vc.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            vc.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)])
-        vc.didMove(toParent: self)
+    func onboardingPageItemChanged(newStoryboardID: String) {
+        //Removing old viewcontroller
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            self.addChildViewController(viewControllerID: newStoryboardID)
+        }
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            self.currentViewController.view.removeFromSuperview()
+        }
+        CATransaction.commit()
+        CATransaction.commit()
     }
     
     func onboardingItem(at index: Int) -> OnboardingItemInfo {

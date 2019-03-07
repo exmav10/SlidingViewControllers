@@ -32,7 +32,19 @@
                     <view key="view" contentMode="scaleToFill" id="xc0-fl-dWj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfP-Bh-zem">
+                                <rect key="frame" x="164" y="318.5" width="47" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jfP-Bh-zem" firstAttribute="centerY" secondItem="xc0-fl-dWj" secondAttribute="centerY" id="36A-Zh-exU"/>
+                            <constraint firstItem="jfP-Bh-zem" firstAttribute="centerX" secondItem="xc0-fl-dWj" secondAttribute="centerX" id="7dI-gQ-KE2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="0Qb-R0-ryj"/>
                     </view>
                 </viewController>
@@ -47,7 +59,19 @@
                     <view key="view" contentMode="scaleToFill" id="gTe-nG-PsI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Rf-c1-MQ4">
+                                <rect key="frame" x="146" y="318.5" width="83" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4Rf-c1-MQ4" firstAttribute="centerY" secondItem="gTe-nG-PsI" secondAttribute="centerY" id="RZh-rw-9dd"/>
+                            <constraint firstItem="4Rf-c1-MQ4" firstAttribute="centerX" secondItem="gTe-nG-PsI" secondAttribute="centerX" id="lir-Mm-CVD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8AD-gb-z3a"/>
                     </view>
                 </viewController>
@@ -62,7 +86,19 @@
                     <view key="view" contentMode="scaleToFill" id="aYb-Q1-fyA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Third" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faJ-Lk-mM1">
+                                <rect key="frame" x="159.5" y="318.5" width="56" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="faJ-Lk-mM1" firstAttribute="centerY" secondItem="aYb-Q1-fyA" secondAttribute="centerY" id="4ys-kj-3yl"/>
+                            <constraint firstItem="faJ-Lk-mM1" firstAttribute="centerX" secondItem="aYb-Q1-fyA" secondAttribute="centerX" id="pKM-h0-3w4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4m1-fh-ntG"/>
                     </view>
                 </viewController>

@@ -42,6 +42,7 @@ open class PaperOnboarding: UIView { //Container View
     fileprivate var pageViewSelectedRadius: CGFloat = 22
     fileprivate var pageViewRadius: CGFloat = 8
     
+    fileprivate var count = 0
 //    fileprivate var fillAnimationView: FillAnimationView?
     fileprivate var pageView: PageView?
     fileprivate var gestureControl: GestureControl?
@@ -90,7 +91,7 @@ open class PaperOnboarding: UIView { //Container View
     
     func changeCurrentController(controllerIdentifier: String){
         if case let dataSource as PaperOnboardingDataSource = dataSource {
-            dataSource.onboardingPageItemChanged(newStoryboardID: "firstVC", oldStoryboardID: "secondVC")
+            dataSource.onboardingPageItemChanged(newStoryboardID: controllerIdentifier)
         }
     }
     
