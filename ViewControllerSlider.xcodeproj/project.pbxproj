@@ -25,6 +25,7 @@
 		177F74652228192D0096D1BE /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F74642228192D0096D1BE /* PageView.swift */; };
 		177F7467222819DF0096D1BE /* PageViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F7466222819DF0096D1BE /* PageViewItem.swift */; };
 		177F7469222827B70096D1BE /* PageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F7468222827B70096D1BE /* PageContainer.swift */; };
+		BB86FAD92230CDA200B1A77B /* FillAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB86FAD82230CDA200B1A77B /* FillAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		177F74642228192D0096D1BE /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		177F7466222819DF0096D1BE /* PageViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewItem.swift; sourceTree = "<group>"; };
 		177F7468222827B70096D1BE /* PageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContainer.swift; sourceTree = "<group>"; };
+		BB86FAD82230CDA200B1A77B /* FillAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillAnimation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 		177F74392227DB7B0096D1BE /* ViewControllerSlider */ = {
 			isa = PBXGroup;
 			children = (
+				BB86FAD72230CD1F00B1A77B /* FillAnimation */,
 				177F7463222810FC0096D1BE /* PageView */,
 				177F7462222810D70096D1BE /* PaperOnboarding */,
 				177F745B2227FE8E0096D1BE /* Helpers */,
@@ -125,6 +128,14 @@
 				177F7468222827B70096D1BE /* PageContainer.swift */,
 			);
 			path = PageView;
+			sourceTree = "<group>";
+		};
+		BB86FAD72230CD1F00B1A77B /* FillAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				BB86FAD82230CDA200B1A77B /* FillAnimation.swift */,
+			);
+			path = FillAnimation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +214,7 @@
 				177F74432227DB7B0096D1BE /* ViewControllerSlider.xcdatamodeld in Sources */,
 				177F74612228065F0096D1BE /* PaperOnboardingDelegate.swift in Sources */,
 				177F743B2227DB7B0096D1BE /* AppDelegate.swift in Sources */,
+				BB86FAD92230CDA200B1A77B /* FillAnimation.swift in Sources */,
 				177F74652228192D0096D1BE /* PageView.swift in Sources */,
 				177F7469222827B70096D1BE /* PageContainer.swift in Sources */,
 				177F745D222801710096D1BE /* PaperOnboarding.swift in Sources */,

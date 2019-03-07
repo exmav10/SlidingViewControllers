@@ -43,7 +43,7 @@ open class PaperOnboarding: UIView { //Container View
     fileprivate var pageViewRadius: CGFloat = 8
     
     fileprivate var count = 0
-//    fileprivate var fillAnimationView: FillAnimationView?
+    fileprivate var fillAnimationView: FillAnimationView?
     fileprivate var pageView: PageView?
     fileprivate var gestureControl: GestureControl?
 //    fileprivate var contentView: OnboardingContentView?
@@ -76,7 +76,7 @@ open class PaperOnboarding: UIView { //Container View
                 (self.delegate as? PaperOnboardingDelegate)?.onboardingDidTransitonToIndex(index)
             })
             if let position = pageView?.positionItemIndex(index, onView: self) {
-//                fillAnimationView?.fillAnimation(backgroundColor(currentIndex), centerPosition: postion, duration: 0.5)
+                fillAnimationView?.fillAnimation(backgroundColor(currentIndex), centerPosition: position, duration: 0.5)
             }
             pageView?.currentIndex(index, animated: animated)
             if let selectedItem = itemsInfo?[index] {
@@ -109,7 +109,7 @@ open class PaperOnboarding: UIView { //Container View
         
         itemsInfo = createItemsInfo()
         translatesAutoresizingMaskIntoConstraints = false
-//        fillAnimationView = FillAnimationView.animationViewOnView(self, color: backgroundColor(currentIndex))
+        fillAnimationView = FillAnimationView.animationViewOnView(self, color: backgroundColor(currentIndex))
 //        contentView = OnboardingContentView.contentViewOnView(self,
 //                                                              delegate: self,
 //                                                              itemsCount: itemsCount,

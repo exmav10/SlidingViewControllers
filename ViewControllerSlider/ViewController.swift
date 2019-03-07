@@ -56,6 +56,7 @@ class ViewController: UIViewController, PaperOnboardingDelegate {
             currentViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             currentViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             currentViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)])
+        //Adding Onboarding Stuff
         currentViewController.view.addSubview(onboarding)
         for attribute: NSLayoutConstraint.Attribute in [.left, .right, .top, .bottom] {
             let constraint = NSLayoutConstraint(item: onboarding,
