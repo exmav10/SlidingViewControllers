@@ -97,7 +97,7 @@ extension PageView{
 //        if 0 ..< itemsCount ~= index {
 //
 //        }
-        if let currentItem = pageContainer?.items?[index].imageView {
+        if let currentItem = pageContainer?.items?[index].centerView {
             let pos = currentItem.convert(currentItem.center, to: onView)
             return pos
         }
