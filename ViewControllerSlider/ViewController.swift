@@ -94,6 +94,7 @@ class ViewController: UIViewController {
         //Removing old viewcontroller
         CATransaction.begin()
         CATransaction.setCompletionBlock {
+            self.gestureControl?.removeFromSuperview()
             self.addChildViewController(viewControllerID: newStoryboardID)
         }
         CATransaction.begin()
@@ -116,6 +117,7 @@ class ViewController: UIViewController {
             currentViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             currentViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)])
         currentViewController.didMove(toParent: self)
+        gestureControl = GestureControl(view: self.view, delegate: self)
     }
     
     fileprivate func backgroundColor(_ index: Int) -> UIColor {
