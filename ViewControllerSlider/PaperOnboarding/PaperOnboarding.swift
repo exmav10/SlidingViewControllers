@@ -9,17 +9,6 @@
 import Foundation
 import UIKit
 
-public struct OnboardingItemInfo {
-    public let title: String
-    public let backgroundColor: UIColor
-    public let storyBoardID: String
-    public init (storyBoardID: String, title: String, backgroundColor: UIColor) {
-        self.title = title
-        self.backgroundColor = backgroundColor
-        self.storyBoardID = storyBoardID
-    }
-}
-
 open class PaperOnboarding: UIView { //Container View
     
     ///  The object that acts as the data source of the  PaperOnboardingDataSource.

@@ -4,7 +4,7 @@
 //
 //  Created by Aydin Unal [Uygulama Gelistirme - Mobil Bankacilik Uygulamalari Bolumu] on 28.02.2019.
 //  Copyright © 2019 Aydin Unal [Uygulama Gelistirme - Mobil Bankacilik Uygulamalari Bolumu]. All rights reserved.
-//
+//  Credit to: https://github.com/Ramotion/paper-onboarding
 
 import Foundation
 import UIKit
@@ -85,18 +85,11 @@ extension PageView{
     }
     
     func currentIndex(_ index: Int, animated: Bool) {
-//        if 0 ..< itemsCount ~= index {
-//            pageContainer?.currentIndex(index, duration: duration * 0.5, animated: animated)
-//            moveContainerTo(index, animated: animated, duration: duration)
-//        }
         pageContainer?.currentIndex(index, duration: duration * 0.5, animated: animated)
         moveContainerTo(index, animated: animated, duration: duration)
     }
     
     func positionItemIndex(_ index: Int, onView: UIView) -> CGPoint? {
-//        if 0 ..< itemsCount ~= index {
-//
-//        }
         if let currentItem = pageContainer?.items?[index].centerView {
             let pos = currentItem.convert(currentItem.center, to: onView)
             return pos

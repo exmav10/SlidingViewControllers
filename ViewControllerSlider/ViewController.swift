@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-
+    
     fileprivate let items = [
         OnboardingItemInfo(storyBoardID: "firstVC",title: "First Page", backgroundColor: .appleBlue1),
         OnboardingItemInfo(storyBoardID: "secondVC", title: "Second Page", backgroundColor: .appleYellow),
@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     fileprivate var currentViewController = UIViewController()
     fileprivate var pageView: PageView?
     fileprivate var gestureControl: GestureControl?
+    var pageViewColor: UIColor = .white
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +64,6 @@ class ViewController: UIViewController {
     
     func currentIndex(_ index: Int, animated: Bool){
         if 0 ..< items.count ~= index { //Checks if index is between 0 and itemsCount
-            //(delegate as? PaperOnboardingDelegate)?.onboardingWillTransitonToIndex(index)
             currentIndex = index
             print("CURRENT INDEX: \(currentIndex)")
             if let position = pageView!.positionItemIndex(index, onView: self.view){
@@ -81,25 +81,22 @@ class ViewController: UIViewController {
             bottomConstraint: pageViewBottomConstant * -1,
             radius: pageViewRadius,
             selectedRadius: pageViewSelectedRadius,
-            itemColor: { _ in UIColor.red
+            itemColor: { _ in self.pageViewColor
         })
-        pageView.configuration = { [weak self] item, index in
-            //item.imageView?.image = self?.itemsInfo?[index].pageIcon
-            //item.backgroundColor = self?.itemsInfo?[index].backgroundColor
-        }
         return pageView
     }
 
     func itemChanged(newStoryboardID: String) {
-        //Removing old viewcontroller
+        //first remove gesture control and old controlview then add new control view and gesture control
         CATransaction.begin()
         CATransaction.setCompletionBlock {
-            self.gestureControl?.removeFromSuperview()
             self.addChildViewController(viewControllerID: newStoryboardID)
+            self.gestureControl = GestureControl(view: self.view, delegate: self)
         }
         CATransaction.begin()
         CATransaction.setCompletionBlock {
             self.currentViewController.view.removeFromSuperview()
+            self.gestureControl?.removeFromSuperview()
         }
         CATransaction.commit()
         CATransaction.commit()
@@ -117,7 +114,6 @@ class ViewController: UIViewController {
             currentViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             currentViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)])
         currentViewController.didMove(toParent: self)
-        gestureControl = GestureControl(view: self.view, delegate: self)
     }
     
     fileprivate func backgroundColor(_ index: Int) -> UIColor {
@@ -140,3 +136,16 @@ extension ViewController: GestureControlDelegate {
         }
     }
 }
+
+
+public struct OnboardingItemInfo {
+    public let title: String
+    public let backgroundColor: UIColor
+    public let storyBoardID: String
+    public init (storyBoardID: String, title: String, backgroundColor: UIColor) {
+        self.title = title
+        self.backgroundColor = backgroundColor
+        self.storyBoardID = storyBoardID
+    }
+}
+

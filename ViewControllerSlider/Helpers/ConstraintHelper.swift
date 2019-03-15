@@ -1,10 +1,11 @@
 //
-//  ConstraintHelper.swift
-//  ViewControllerSlider
+//  ConstraintsHelper.swift
+//  AnimatedPageView
 //
-//  Created by Aydin Unal [Uygulama Gelistirme - Mobil Bankacilik Uygulamalari Bolumu] on 28.02.2019.
-//  Copyright © 2019 Aydin Unal [Uygulama Gelistirme - Mobil Bankacilik Uygulamalari Bolumu]. All rights reserved.
+//  Created by Alex K. on 13/04/16.
+//  Copyright © 2016 Alex K. All rights reserved.
 //
+
 
 import Foundation
 import UIKit
